@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="lib/jquery.js"></script>
+  <title>Document</title>
+
+  <style>
+    html,body {
+      margin: 0;
+      padding: 0;
+    }
+    #angel {
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+<img src="angel.gif" alt="" id="angel">
+
+
+<script>
+  $(function (){
+    //获取图片
+    var angel=$('#angel')
+    //绑定mousemove事件
+    var timer=null  //定义节流阀
+    $(document).on('mousemove', function (e){
+      if (timer){return} //判断节流阀是否为空
+      // console.log(e.pageX)
+      // console.log(e.pageY)
+      //设置图片位置
+      timer=setTimeout(function (){
+        angel.css('left',e.pageX-40+'px').css('top',e.pageY-50+'px')
+        timer=null
+      },16)
+    })
+  })
+</script>
+</body>
+
+</html>
